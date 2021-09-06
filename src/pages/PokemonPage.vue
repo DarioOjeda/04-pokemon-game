@@ -46,6 +46,7 @@ export default {
       pokemon: null,
       showPokemon: false,
       showAnswer: false,
+      pressedFlag: false,
       msg: ''
     }
   },
@@ -57,22 +58,31 @@ export default {
       this.pokemon = this.pokemonArr[rndInt]
     },
     checkAnswer(selectedId) {
+      if(this.pressedFlag) {
+        return
+      }
+      
       this.showPokemon = true
       this.showAnswer = true
+
+      
 
       if(selectedId === this.pokemon.id) {
         this.msg = `Correcto, ${ this.pokemon.name }`
       }else{
         this.msg = `Error, era ${ this.pokemon.name }`
       }
+      this.pressedFlag = true
     },
     async newGame() {
      this.showPokemon = false
      this.showAnswer = false 
+     this.pressedFlag = false
      this.pokemonArr = []
      this.pokemon = null
 
      this.mixPokemonArr() 
+     
     }
   },
   mounted() {

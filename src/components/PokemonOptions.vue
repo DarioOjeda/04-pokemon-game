@@ -16,8 +16,8 @@ export default {
         pokemons: {
             type: Array,
             required: true
-        }
-    }
+        },
+    },
 }
 </script>
 
